@@ -1,0 +1,664 @@
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+    font-family: sans-serif;
+}
+
+body {
+    scroll-behavior: smooth;
+}
+
+/* start nav */
+
+/* nav {
+   
+    height: 100vh;
+  
+
+} */
+
+.navbar {
+    background: url(../img/Background.9b7deee0.svg);
+    background-repeat: no-repeat;
+    background-size: cover;
+    background-attachment: fixed;
+    background-position: center;
+
+    display: flex;
+    justify-content: center;
+    gap: 2rem;
+    padding-top: 20px;
+
+}
+
+.img-nav {
+    margin-right: 3rem;
+
+}
+
+.search {
+    margin-left: 3rem;
+    margin-right: 3rem;
+
+}
+
+.search img {
+    width: 25px;
+    margin-left: -3rem;
+    border-radius: 20px;
+
+
+}
+
+
+.search input {
+    border: 1px solid white;
+    height: 3rem;
+    border-radius: 30px;
+    direction: rtl;
+    text-indent: 3rem;
+    font-size: 1.2rem;
+    padding-right: 4px;
+    outline: none;
+}
+
+
+.link-nav {
+    display: flex;
+    gap: 15px;
+    direction: rtl;
+
+}
+
+.link-nav a {
+    color: #fffefd;
+    text-decoration: none;
+    font-size: 1.2rem;
+    position: relative;
+    padding: 5px 10px;
+    transition: all 0.3s ease-in-out;
+}
+
+
+.link-nav a::after {
+    content: "";
+    position: absolute;
+    left: 50%;
+    bottom: 0;
+    width: 0%;
+    height: 4px;
+    background-color: #B88E61;
+    transition: all 0.8s ease-in-out;
+    transform: translateX(-50%);
+}
+
+.link-nav a:hover::after,
+.link-nav a.active::after {
+    width: 40%;
+}
+
+
+.heading-nav {
+    font-size: 1.6rem;
+    font-weight: 600;
+    color: aliceblue;
+}
+
+.logo img {
+    width: 50px;
+}
+
+
+.search {
+    position: relative;
+}
+
+.search input {
+    width: 200px;
+    height: 35px;
+    border-radius: 20px;
+    border: none;
+    padding-right: 40px;
+}
+
+.search img {
+    position: absolute;
+    top: 50%;
+    right: 10px;
+    transform: translateY(-50%);
+    width: 20px;
+}
+
+/* الروابط */
+.nav-links {
+    display: flex;
+    gap: 15px;
+}
+
+.nav-links a {
+    color: white;
+    text-decoration: none;
+    font-size: 1.2rem;
+}
+
+.nav-links a:hover {
+    text-decoration: underline;
+}
+
+
+/* العنوان */
+.title {
+    font-size: 1.4rem;
+    font-weight: bold;
+    border: 1px solid white;
+    padding: 5px 10px;
+    border-radius: 10px;
+}
+
+/* زر القائمة الجانبية */
+.menu-toggle {
+    display: none;
+    font-size: 2rem;
+    cursor: pointer;
+    color: white;
+}
+
+/* القائمة الجانبية */
+.sidebar {
+    position: fixed;
+    top: 0;
+    left: -100%;
+    width: 250px;
+    height: 100vh;
+    background: rgba(0, 0, 0, 0.9);
+    padding: 20px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    transition: 0.3s;
+}
+
+.sidebar.active {
+    left: 0;
+}
+
+.close-btn {
+    font-size: 2rem;
+    color: white;
+    cursor: pointer;
+    align-self: flex-end;
+}
+
+@media (max-width: 768px) {
+    .menu-toggle {
+        display: block;
+    }
+
+    .img-nav {
+        order: 2;
+        /* اللوجو يروح يمين */
+        margin-left: auto;
+    }
+
+    .menu-toggle {
+        order: 1;
+        /* القائمة (☰) تروح شمال */
+        margin-right: auto;
+    }
+
+    .link-nav,
+    .text-nav {
+        display: none;
+        /* إخفاء الروابط العادية ونص "جلدية بالعربي" */
+    }
+
+    .search {
+        display: none;
+        /* إخفاء البحث خارج القائمة */
+    }
+
+    .sidebar {
+        position: fixed;
+        top: 0;
+        left: -100%;
+        width: 250px;
+        height: 100vh;
+        background: rgba(255, 254, 254, 0.9);
+        flex-direction: column;
+        align-items: center;
+        padding: 20px;
+        transition: 0.3s;
+        z-index: 999;
+    }
+
+    .sidebar.active {
+        left: 0;
+        /* إظهار القائمة عند الضغط */
+    }
+
+    .sidebar .nav-links {
+        display: flex;
+        flex-direction: column;
+        text-align: center;
+        gap: 15px;
+    }
+
+    .sidebar .nav-links a {
+        color: rgb(0, 0, 0);
+        text-decoration: none;
+        font-size: 1.2rem;
+        padding: 10px;
+    }
+
+    .sidebar .search {
+        display: flex;
+        /* إظهار البحث داخل القائمة */
+        width: 100%;
+        justify-content: center;
+        margin-top: 20px;
+    }
+
+    .sidebar .search input {
+        width: 80%;
+        height: 35px;
+        border-radius: 20px;
+        border: none;
+        padding-right: 40px;
+        text-align: right;
+    }
+
+    .sidebar .search img {
+        position: absolute;
+        top: 50%;
+        right: 30px;
+        transform: translateY(-50%);
+        width: 20px;
+    }
+
+    .close-btn {
+        font-size: 2rem;
+        color: white;
+        cursor: pointer;
+        align-self: flex-end;
+        margin-bottom: 20px;
+    }
+}
+
+header {
+    height: 170vh;
+ 
+}
+
+.article {
+    margin-top: 10rem;
+    margin-left: 10rem;
+    margin-right: 10rem;
+    border: 0.5px solid rgb(132, 126, 126);
+    background-color: #f9f5f0;
+    border-radius: 30px;
+    display: block; /* أو flex لو محتاج تنسيق داخلي */
+    height: auto; /* يخلي الارتفاع يتمدد حسب المحتوى */
+    height: 150vh;
+}
+ .top-article {
+    display: flex;
+    justify-content: space-between;
+    margin-top: 2rem;
+}
+
+.left-top {
+    margin-left: 2rem;
+    cursor: pointer;
+    direction: rtl;
+    border: 2px solid whitesmoke;
+    border-radius: 10px;
+    background-color: #fffefd;
+    box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.1);
+    padding-top: 5px;
+
+}
+
+.left-top i {
+    font-size: 1.4rem;
+    padding-right: 10px;
+    padding-left: 15px;
+
+}
+
+.heading-left {
+    font-size: 1.3rem;
+    padding-right: 15px;
+}
+
+
+
+
+
+.menu {
+    display: none; /* إخفاء القائمة بشكل افتراضي */
+    position: absolute; /* لجعل القائمة تظهر بجانب الزر */
+    margin-top: 10px; /* مسافة بين الزر والقائمة */
+    border: 1px solid #ccc;
+    background-color: #fff;
+    box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.1);
+    border-radius: 5px;
+    z-index: 1000; /* لجعل القائمة فوق العناصر الأخرى */
+    direction: rtl; /* اتجاه النص من اليمين إلى اليسار */
+    text-align: right; /* محاذاة النص إلى اليمين */
+}
+
+.menu ul {
+    list-style-type: none;
+    padding: 0;
+    margin: 0;
+}
+
+.menu li {
+    padding: 10px;
+    cursor: pointer;
+    position: relative; /* لجعل القائمة الفرعية تظهر بشكل صحيح */
+
+}
+
+.menu li:hover {
+    background-color: #f0f0f0; /* تغيير لون الخلفية عند التمرير */
+}
+
+.sub-menu {
+    display: none; /* إخفاء القائمة الفرعية بشكل افتراضي */
+    position: absolute; /* لجعل القائمة الفرعية تظهر بجانب العنصر */
+    right:100% ; /* تظهر بجانب العنصر */
+    top: 0; /* تتماشى مع العنصر */
+    border: 1px solid #ccc;
+    background-color: #fff;
+    box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.1);
+    border-radius: 5px;
+    z-index: 1000; /* لجعل القائمة الفرعية فوق العناصر الأخرى */
+ width: 150px;
+}
+
+.sub-menu ul {
+    list-style-type: none;
+    padding: 0;
+    margin: 0;
+}
+
+.sub-menu li {
+    padding: 10px;
+    cursor: pointer;
+    direction:rtl;
+}
+
+.sub-menu li:hover {
+    background-color: #f0f0f0; /* تغيير لون الخلفية عند التمرير */
+}
+
+
+
+
+
+
+.right-top {
+    direction: rtl;
+    margin-right: 2rem;
+    background-color: #fffefd;
+    border-radius: 20px;
+    outline: none;
+    border: #f9f5f0;
+
+}
+
+.right-top input {
+    width: 20rem;
+    height: 3rem;
+
+    font-size: 1.1rem;
+    text-indent: 20px;
+    border-radius: 20px;
+    background-color: #fffefd;
+    outline: none;
+    letter-spacing: inherit;
+
+
+}     
+
+
+
+.accordion{
+margin-top: 5rem;
+ margin-left: 2rem;
+  margin-right: 2rem;
+
+}
+.accordion-button {
+    display: flex;
+    flex-direction: row-reverse; /* يعكس ترتيب العناصر داخل الزر */
+    text-align: right; /* يجعل النص بمحاذاة اليمين */
+}
+.accordion h1{
+    font-size: 1.4rem;
+    direction: rtl;
+}
+
+.accordion-button::after {
+margin-right:50rem; 
+}
+
+@media (max-width: 768px) {
+    header {
+        height: auto; /* تعديل ارتفاع الهيدر */
+    }
+
+    .article {
+        margin: 1rem; /* تقليل الهوامش */
+        height: auto; /* السماح للارتفاع بالتكيف */
+    }
+
+    .top-article {
+        flex-direction: column; /* ترتيب العناصر عموديًا */
+        align-items: center; /* محاذاة العناصر في المنتصف */
+    }
+
+    .left-top {
+        width: 100%; /* جعل الزر بعرض 100% */
+        margin: 1rem 0; /* إضافة مسافة عمودية */
+    }
+
+    .heading-left {
+        font-size: 1.2rem; /* تقليل حجم الخط */
+    }
+
+    .menu {
+        width: 100%; /* جعل القائمة بعرض 100% */
+    }
+
+    .right-top {
+        width: 100%; /* جعل الزر بعرض 100% */
+        margin-right: 0; /* إزالة الهوامش الجانبية */
+    }
+
+    .right-top input {
+        width: 100%; /* جعل حقل الإدخال بعرض 100% */
+        height: 2.5rem; /* تقليل ارتفاع حقل الإدخال */
+    }
+
+    .accordion {
+        margin: 1rem; /* تقليل الهوامش */
+    }
+
+    .accordion h1 {
+        font-size: 1.2rem; /* تقليل حجم الخط */
+    }
+
+    .accordion-button {
+        justify-content: space-between; /* توزيع العناصر بشكل متساوي */
+    }
+
+    .accordion-button::after {
+        margin-right: 1rem; /* تقليل المسافة */
+    }
+}
+
+/* start footer */
+
+footer {
+    height: 40vh;
+
+    background-image: url("../img/Background.9b7deee0.svg");
+
+    background-attachment: fixed;
+    background-size: cover;
+    background-repeat: no-repeat;
+
+}
+
+.right-footer {
+    float: right;
+    margin-right: 10rem;
+    margin-top: 2rem;
+    margin-bottom: 1rem;
+}
+
+.img-footer {
+    float: right;
+    margin-top: 25px;
+}
+
+.left-footer {
+    float: left;
+    display: flex;
+    flex-direction: column;
+    margin-top: 2rem;
+margin-left: 10rem;
+margin-bottom: 1rem;
+}
+
+.left-footer .bi{
+    font-size: 2.8rem;
+    color: #f1f1f1;
+    padding-right: 10px;
+    cursor: pointer;
+    transition: 1s ease;
+}
+
+.left-footer .bi:hover {
+    color: #B88E61;
+}
+
+.phon-footer {
+    margin-top: 2rem;
+}
+
+.phon-footer span {
+    color: #f1f1f1;
+    font-size: 1.1rem;
+}
+
+.phon-footer .bi-telephone-fill {
+    font-size: 1.3rem;
+    color: #B88E61;
+}
+
+.email-footer a {
+    font-size: 1.1rem;
+    padding-left: 6px;
+    color: #f1f1f1;
+    text-decoration: none;
+}
+
+.email-footer .bi {
+    font-size: 1.3rem;
+    color: #B88E61;
+}
+.pragraf-footer-left{
+    float: left;
+    margin-left:10rem ;
+    color: #f1f1f1;
+    margin-top: 1rem;
+
+}
+.pragraf-footer-right{
+    float: right;
+    margin-right: 10rem ;
+    color: #f1f1f1;
+    margin-top: 1rem;
+
+}
+
+/* Responsive Design */
+@media screen and (max-width: 1024px) {
+    footer {
+        height: auto;
+        padding: 2rem 0;
+    }
+    .right-footer, .left-footer, .pragraf-footer-left, .pragraf-footer-right {
+        float: none;
+        margin: 1rem auto;
+        text-align: center;
+    }
+    .link-nav{
+        display: none;
+    }
+    .right-footer a{
+  margin-right: 8rem;
+  margin-bottom: 1rem;
+    }
+    .left-footer {
+        margin-left: 0;
+    }
+    .pragraf-footer-left, .pragraf-footer-right {
+        margin-left: 0;
+        margin-right: 0;
+    }
+    .img-footer {
+        float: none;
+        display: block;
+        margin: 1rem auto;
+    }
+}
+
+@media (max-width: 768px) {
+    footer {
+        height: auto; /* السماح بتمدد الفوتر حسب المحتوى */
+        text-align: center;
+        padding: 2rem 1rem;
+    }
+
+    .right-footer, .left-footer {
+        float: none; /* إلغاء الـ float لضمان ترتيب المحتوى بشكل عمودي */
+        margin: 0 auto;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+    }
+
+    .img-footer {
+        float: none;
+        margin: 15px auto;
+    }
+
+    .left-footer .bi {
+        font-size: 2.5rem; /* تكبير الأيقونات */
+        margin-bottom: 10px;
+    }
+
+    /* إخفاء اللينكات */
+    .pragraf-footer-left,
+    .pragraf-footer-right {
+        display: none;
+    }
+
+    /* تنسيق الهاتف والإيميل */
+    .phon-footer, .email-footer {
+        display: flex;
+        align-items: center;
+        gap: 10px;
+        margin-top: 10px;
+    }
+
+    .phon-footer span,
+    .email-footer a {
+        font-size: 1rem;
+    }
+}

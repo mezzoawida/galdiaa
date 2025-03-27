@@ -1,0 +1,744 @@
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+    font-family: sans-serif;
+}
+
+body {
+    scroll-behavior: smooth;
+}
+
+/* start nav */
+
+nav {
+    background: url(../img/Background.9b7deee0.svg);
+    height: 130vh;
+    background-repeat: no-repeat;
+    background-size: cover;
+    background-attachment: fixed;
+    background-position: center;
+
+}
+
+.navbar {
+    display: flex;
+    justify-content: center;
+    gap: 2rem;
+    padding-top: 20px;
+
+}
+
+.img-nav {
+    margin-right: 3rem;
+
+}
+
+.search {
+    margin-left: 3rem;
+    margin-right: 3rem;
+
+}
+
+.search img {
+    width: 25px;
+    margin-left: -3rem;
+    border-radius: 20px;
+
+
+}
+
+.search input {
+    border: 1px solid white;
+    height: 3rem;
+    border-radius: 30px;
+    direction: rtl;
+    text-indent: 3rem;
+    font-size: 1.2rem;
+    padding-right: 4px;
+    outline: none;
+}
+
+.link-nav {
+    display: flex;
+    gap: 15px;
+    direction: rtl;
+
+}
+
+.link-nav a {
+    color: #fffefd;
+    text-decoration: none;
+    font-size: 1.2rem;
+    position: relative;
+    padding: 5px 10px;
+    transition: all 0.3s ease-in-out;
+}
+
+
+.link-nav a::after {
+    content: "";
+    position: absolute;
+    left: 50%;
+    bottom: 0;
+    width: 0%;
+    height: 4px;
+    background-color: #B88E61;
+    transition: all 0.8s ease-in-out;
+    transform: translateX(-50%);
+}
+
+.link-nav a:hover::after,
+.link-nav a.active::after {
+    width: 40%;
+    /* يتحكم في عرض الخط عند التمرير أو التحديد */
+}
+
+
+
+.text-nav {
+    margin-left: 3rem;
+    margin-top: 2rem;
+}
+
+.heading-nav {
+    font-size: 1.6rem;
+    font-weight: 600;
+    color: aliceblue;
+}
+
+/* اللوجو */
+.logo img {
+    width: 50px;
+}
+
+/* البحث */
+.search {
+    position: relative;
+}
+
+.search input {
+    width: 200px;
+    height: 35px;
+    border-radius: 20px;
+    border: none;
+    padding-right: 40px;
+}
+
+.search img {
+    position: absolute;
+    top: 50%;
+    right: 10px;
+    transform: translateY(-50%);
+    width: 20px;
+}
+
+/* الروابط */
+.nav-links {
+    display: flex;
+    gap: 15px;
+}
+
+.nav-links a {
+    color: white;
+    text-decoration: none;
+    font-size: 1.2rem;
+}
+
+.nav-links a:hover {
+    text-decoration: underline;
+}
+
+
+/* العنوان */
+.title {
+    font-size: 1.4rem;
+    font-weight: bold;
+    border: 1px solid white;
+    padding: 5px 10px;
+    border-radius: 10px;
+}
+
+/* زر القائمة الجانبية */
+.menu-toggle {
+    display: none;
+    font-size: 2rem;
+    cursor: pointer;
+    color: white;
+}
+
+/* القائمة الجانبية */
+.sidebar {
+    position: fixed;
+    top: 0;
+    left: -100%;
+    width: 250px;
+    height: 100vh;
+    background: rgba(0, 0, 0, 0.9);
+    padding: 20px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    transition: 0.3s;
+}
+
+.sidebar.active {
+    left: 0;
+}
+
+.close-btn {
+    font-size: 2rem;
+    color: white;
+    cursor: pointer;
+    align-self: flex-end;
+}
+
+@media (max-width: 768px) {
+    .menu-toggle {
+        display: block;
+    }
+
+    .img-nav {
+        order: 2;
+        /* اللوجو يروح يمين */
+        margin-left: auto;
+    }
+
+    .menu-toggle {
+        order: 1;
+        /* القائمة (☰) تروح شمال */
+        margin-right: auto;
+    }
+
+    .link-nav,
+    .text-nav {
+        display: none;
+        /* إخفاء الروابط العادية ونص "جلدية بالعربي" */
+    }
+
+    .search {
+        display: none;
+        /* إخفاء البحث خارج القائمة */
+    }
+
+    .sidebar {
+        position: fixed;
+        top: 0;
+        left: -100%;
+        width: 250px;
+        height: 100vh;
+        background: rgba(255, 254, 254, 0.9);
+        flex-direction: column;
+        align-items: center;
+        padding: 20px;
+        transition: 0.3s;
+        z-index: 999;
+    }
+
+    .sidebar.active {
+        left: 0;
+        /* إظهار القائمة عند الضغط */
+    }
+
+    .sidebar .nav-links {
+        display: flex;
+        flex-direction: column;
+        text-align: center;
+        gap: 15px;
+    }
+
+    .sidebar .nav-links a {
+        color: rgb(0, 0, 0);
+        text-decoration: none;
+        font-size: 1.2rem;
+        padding: 10px;
+    }
+
+    .sidebar .search {
+        display: flex;
+        /* إظهار البحث داخل القائمة */
+        width: 100%;
+        justify-content: center;
+        margin-top: 20px;
+    }
+
+    .sidebar .search input {
+        width: 80%;
+        height: 35px;
+        border-radius: 20px;
+        border: none;
+        padding-right: 40px;
+        text-align: right;
+    }
+
+    .sidebar .search img {
+        position: absolute;
+        top: 50%;
+        right: 30px;
+        transform: translateY(-50%);
+        width: 20px;
+    }
+
+    .close-btn {
+        font-size: 2rem;
+        color: white;
+        cursor: pointer;
+        align-self: flex-end;
+        margin-bottom: 20px;
+    }
+}
+
+
+
+.container {
+    display: flex;
+    align-items: center;
+    gap: 80px;
+    width: 80%;
+    border-radius: 12px;
+    padding: 20px;
+
+}
+
+.image-section img {
+    width: 450px;
+    height: 735px;
+    margin-top: 5rem;
+}
+
+.form-section {
+    width: 50%;
+    padding: 20px;
+    color: white;
+    direction: rtl;
+    margin-left: 10rem;
+    margin-top: -10rem;
+}
+
+h2 {
+    text-align: right;
+    margin-bottom: 20px;
+    color: #d8a35f;
+}
+
+form {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 15px;
+    height: 60vh;
+}
+
+.form-group {
+    display: flex;
+    flex-direction: column;
+    margin-bottom: 15px;
+}
+
+label {
+    margin-bottom: 5px;
+    font-weight: bold;
+}
+
+input,
+select,
+textarea {
+    padding: 10px;
+    border-radius: 6px;
+    border: 1px solid #ccc;
+    font-size: 16px;
+    background: white;
+    color: #333;
+}
+
+
+.full-width {
+    grid-column: span 2;
+}
+
+button {
+    grid-column: span 2;
+    padding: 12px;
+    background-color: #d8a35f;
+    border: none;
+    border-radius: 8px;
+    font-size: 18px;
+    font-weight: bold;
+    color: white;
+    cursor: pointer;
+    transition: 0.6s ease;
+}
+
+button:hover {
+    background-color: #c68a4bb6;
+}
+.error-message {
+    color: red;
+    font-size: 0.9rem;
+    margin-top: 5px;
+}
+#responseMessage {
+    margin-top: 80px;
+    color: green;
+    text-align: center;
+    display: none; /* إخفاء الرسالة بشكل افتراضي */
+}
+
+.header-center {
+    display: flex;
+    flex-direction: column;
+    margin-top: -15vh;
+    margin-left: 50%;
+    font-size: 30px;
+    color: aliceblue;
+}
+
+.bi-caret-down-fill {
+    animation: upDown 1s infinite;
+}
+
+@keyframes upDown {
+
+    0%,
+    100% {
+        transform: translateY(0);
+    }
+
+    50% {
+        transform: translateY(10px);
+    }
+}
+
+/* Responsive Design */
+@media screen and (max-width: 1024px) {
+    .container {
+        flex-direction: column;
+        width: 90%;
+        gap: 20px;
+    }
+    .image-section {
+        display: none;
+    }
+    .form-section {
+        width: 100%;
+        margin-left: 0;
+        margin-top: 0;
+        text-align: center;
+    }
+    form {
+        grid-template-columns: 1fr;
+        height: auto;
+    }
+    button {
+        width: 100%;
+    }
+}
+
+@media screen and (max-width: 768px) {
+    .container {
+        width: 100%;
+        padding: 10px;
+    }
+    .form-section {
+        padding: 10px;
+    }
+    form {
+        grid-template-columns: 1fr;
+        gap: 10px;
+    }
+    button {
+        font-size: 16px;
+        padding: 10px;
+    }
+}
+
+@media screen and (max-width: 480px) {
+    .container {
+        width: 100%;
+        padding: 5px;
+    }
+    .form-section {
+        padding: 5px;
+    }
+    h2 {
+        font-size: 1.5rem;
+    }
+    form {
+        gap: 5px;
+    }
+    button {
+        font-size: 14px;
+        padding: 8px;
+    }
+}
+
+
+
+
+section {
+    padding-top: 4rem;
+    height: 60vh;
+    font-weight: 700;
+
+
+}
+
+.heading-section {
+    text-align: center;
+
+}
+
+.heading-section::after {
+    content: "";
+    display: block;
+    width: 14%;
+    height: 4px;
+    background-color: #d8a46b;
+    margin: auto;
+    margin-top: 10px;
+}
+
+.social {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 30px;
+    padding-top: 20px;
+
+
+}
+
+.pragraf-social {
+    width: 250px;
+    text-align: center;
+    padding: 10px 25px;
+    border: 1px solid #edf2fd;
+    border-radius: 15px;
+    font-size: 1.1rem;
+    font-weight: 600;
+    background-color: #edf2fd;
+    color: #091c47;
+
+}
+.bi{
+    font-size: 1.4rem;
+}
+.pragraf-social:hover{
+    color: white;
+    background-color: #091c47;
+}
+
+@media screen and (max-width: 768px) {
+
+    .container {
+        width: 100%;
+        padding: 10px;
+    }
+    .form-section {
+        padding: 10px;
+    }
+    form {
+        grid-template-columns: 1fr;
+        gap: 10px;
+    }
+    button {
+        font-size: 16px;
+        padding: 10px;
+    }
+    .social {
+        flex-direction: column;
+        gap: 15px;
+    }
+}
+
+@media screen and (max-width: 480px) {
+    .container {
+        width: 100%;
+        padding: 5px;
+    }
+    .form-section {
+        padding: 5px;
+    }
+    h2 {
+        font-size: 1.5rem;
+    }
+    form {
+        gap: 5px;
+    }
+    button {
+        font-size: 14px;
+        padding: 8px;
+    }
+    .social {
+        flex-direction: column;
+        gap: 10px;
+    }
+}
+
+
+
+
+/* start footer */
+
+footer {
+    height: 40vh;
+
+    background-image: url("../img/Background.9b7deee0.svg");
+
+    background-attachment: fixed;
+    background-size: cover;
+    background-repeat: no-repeat;
+
+}
+
+.right-footer {
+    float: right;
+    margin-right: 10rem;
+    margin-top: 2rem;
+    margin-bottom: 1rem;
+}
+
+.img-footer {
+    float: right;
+    margin-top: 25px;
+}
+
+.left-footer {
+    float: left;
+    display: flex;
+    flex-direction: column;
+    margin-top: 2rem;
+margin-left: 10rem;
+margin-bottom: 1rem;
+}
+
+.left-footer .bi{
+    font-size: 2.8rem;
+    color: #f1f1f1;
+    padding-right: 10px;
+    cursor: pointer;
+    transition: 1s ease;
+}
+
+.left-footer .bi:hover {
+    color: #B88E61;
+}
+
+.phon-footer {
+    margin-top: 2rem;
+}
+
+.phon-footer span {
+    color: #f1f1f1;
+    font-size: 1.1rem;
+}
+
+.phon-footer .bi-telephone-fill {
+    font-size: 1.3rem;
+    color: #B88E61;
+}
+
+.email-footer a {
+    font-size: 1.1rem;
+    padding-left: 6px;
+    color: #f1f1f1;
+    text-decoration: none;
+}
+
+.email-footer .bi {
+    font-size: 1.3rem;
+    color: #B88E61;
+}
+.pragraf-footer-left{
+    float: left;
+    margin-left:10rem ;
+    color: #f1f1f1;
+    margin-top: 1rem;
+
+
+}
+.pragraf-footer-right{
+    float: right;
+    margin-right: 10rem ;
+    color: #f1f1f1;
+    margin-top: 1rem;
+
+}
+
+/* Responsive Design */
+@media screen and (max-width: 1024px) {
+    footer {
+        height: auto;
+        padding: 2rem 0;
+    }
+    .right-footer, .left-footer, .pragraf-footer-left, .pragraf-footer-right {
+        float: none;
+        margin: 1rem auto;
+        text-align: center;
+    }
+    
+    .right-footer a{
+        margin-right: 8rem;
+        margin-bottom: 1rem;
+          }
+    .right-footer {
+        margin-right: 0;
+    }
+    .left-footer {
+        margin-left: 0;
+    }
+    .pragraf-footer-left, .pragraf-footer-right {
+        margin-left: 0;
+        margin-right: 0;
+    }
+    .img-footer {
+        float: none;
+        display: block;
+        margin: 1rem auto;
+    }
+}
+
+@media (max-width: 768px) {
+    footer {
+        height: auto; /* السماح بتمدد الفوتر حسب المحتوى */
+        text-align: center;
+        padding: 2rem 1rem;
+        margin-top: 2rem;
+    }
+
+    .right-footer, .left-footer {
+        float: none; /* إلغاء الـ float لضمان ترتيب المحتوى بشكل عمودي */
+        margin: 0 auto;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+    }
+
+    .img-footer {
+        float: none;
+        margin: 15px auto;
+    }
+
+    .left-footer .bi {
+        font-size: 2.5rem; /* تكبير الأيقونات */
+        margin-bottom: 10px;
+    }
+
+    /* إخفاء اللينكات */
+    .pragraf-footer-left,
+    .pragraf-footer-right {
+        display: none;
+    }
+
+    /* تنسيق الهاتف والإيميل */
+    .phon-footer, .email-footer {
+        display: flex;
+        align-items: center;
+        gap: 10px;
+        margin-top: 10px;
+    }
+
+    .phon-footer span,
+    .email-footer a {
+        font-size: 1rem;
+    }
+}

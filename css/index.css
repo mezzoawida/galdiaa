@@ -1,0 +1,1042 @@
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+    font-family: sans-serif;
+}
+
+body {
+    scroll-behavior: smooth;
+}
+
+/* start nav */
+
+nav {
+    background: url(../img/Background.9b7deee0.svg);
+    height: 100vh;
+    background-repeat: no-repeat;
+    background-size: cover;
+    background-attachment: fixed;
+    background-position: center;
+
+}
+
+.navbar {
+    display: flex;
+    justify-content: center;
+    gap: 2rem;
+    padding-top: 20px;
+
+}
+
+.img-nav {
+    margin-right: 3rem;
+
+}
+
+.search {
+    margin-left: 3rem;
+    margin-right: 3rem;
+
+}
+
+.search img {
+    width: 25px;
+    margin-left: -3rem;
+    border-radius: 20px;
+
+
+}
+
+.search input {
+    border: 1px solid white;
+    height: 3rem;
+    border-radius: 30px;
+    direction: rtl;
+    text-indent: 2rem;
+    font-size: 1.2rem;
+    padding-right: 4px;
+    outline: none;
+}
+
+
+.link-nav {
+    display: flex;
+    gap: 15px;
+    direction: rtl;
+
+}
+
+.link-nav a {
+    color: #fffefd;
+    text-decoration: none;
+    font-size: 1.2rem;
+    position: relative;
+    padding: 5px 10px;
+    transition: all 0.3s ease-in-out;
+}
+
+
+.link-nav a::after {
+    content: "";
+    position: absolute;
+    left: 50%;
+    bottom: 0;
+    width: 0%;
+    height: 4px;
+    background-color: #B88E61;
+    transition: all 0.8s ease-in-out;
+    transform: translateX(-50%);
+}
+
+.link-nav a:hover::after,
+.link-nav a.active::after {
+    width: 40%;
+}
+
+
+.heading-nav {
+    font-size: 1.6rem;
+    font-weight: 600;
+    color: aliceblue;
+}
+
+.logo img {
+    width: 50px;
+}
+
+
+.search {
+    position: relative;
+}
+
+.search input {
+    width: 200px;
+    height: 35px;
+    border-radius: 20px;
+    border: none;
+    padding-right: 40px;
+}
+
+.search img {
+    position: absolute;
+    top: 50%;
+    right: 10px;
+    transform: translateY(-50%);
+    width: 20px;
+}
+
+/* الروابط */
+.nav-links {
+    display: flex;
+    gap: 15px;
+}
+
+.nav-links a {
+    color: white;
+    text-decoration: none;
+    font-size: 1.2rem;
+}
+
+.nav-links a:hover {
+    text-decoration: underline;
+}
+
+
+/* العنوان */
+.title {
+    font-size: 1.4rem;
+    font-weight: bold;
+    border: 1px solid white;
+    padding: 5px 10px;
+    border-radius: 10px;
+}
+
+/* زر القائمة الجانبية */
+.menu-toggle {
+    display: none;
+    font-size: 2rem;
+    cursor: pointer;
+    color: white;
+}
+
+/* القائمة الجانبية */
+.sidebar {
+    position: fixed;
+    top: 0;
+    left: -100%;
+    width: 250px;
+    height: 100vh;
+    background: rgba(0, 0, 0, 0.9);
+    padding: 20px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    transition: 0.3s;
+}
+
+.sidebar.active {
+    left: 0;
+}
+
+.close-btn {
+    font-size: 2rem;
+    color: white;
+    cursor: pointer;
+    align-self: flex-end;
+}
+
+@media (max-width: 768px) {
+    .menu-toggle {
+        display: block;
+    }
+
+    .img-nav {
+        order: 2;
+        /* اللوجو يروح يمين */
+        margin-left: auto;
+    }
+
+    .menu-toggle {
+        order: 1;
+        /* القائمة (☰) تروح شمال */
+        margin-right: auto;
+    }
+
+    .link-nav,
+    .text-nav {
+        display: none;
+        /* إخفاء الروابط العادية ونص "جلدية بالعربي" */
+    }
+
+    .search {
+        display: none;
+        /* إخفاء البحث خارج القائمة */
+    }
+
+    .sidebar {
+        position: fixed;
+        top: 0;
+        left: -100%;
+        width: 250px;
+        height: 100vh;
+        background: rgba(255, 254, 254, 0.9);
+        flex-direction: column;
+        align-items: center;
+        padding: 20px;
+        transition: 0.3s;
+        z-index: 999;
+    }
+
+    .sidebar.active {
+        left: 0;
+        /* إظهار القائمة عند الضغط */
+    }
+
+    .sidebar .nav-links {
+        display: flex;
+        flex-direction: column;
+        text-align: center;
+        gap: 15px;
+    }
+
+    .sidebar .nav-links a {
+        color: rgb(0, 0, 0);
+        text-decoration: none;
+        font-size: 1.2rem;
+        padding: 10px;
+    }
+
+    .sidebar .search {
+        display: flex;
+        /* إظهار البحث داخل القائمة */
+        width: 100%;
+        justify-content: center;
+        margin-top: 20px;
+    }
+
+    .sidebar .search input {
+        width: 80%;
+        height: 35px;
+        border-radius: 20px;
+        border: none;
+        padding-right: 40px;
+        text-align: right;
+    }
+
+    .sidebar .search img {
+        position: absolute;
+        top: 50%;
+        right: 30px;
+        transform: translateY(-50%);
+        width: 20px;
+    }
+
+    .close-btn {
+        font-size: 2rem;
+        color: white;
+        cursor: pointer;
+        align-self: flex-end;
+        margin-bottom: 20px;
+    }
+}
+
+/* end nav */
+.header-top {
+    display: flex;
+    justify-content: center;
+    margin-left: 15rem;
+    margin-right: 15rem;
+    margin-top: 5rem;
+
+
+
+}
+
+.header-left {
+    float: left;
+    width: 55%;
+    color: aliceblue;
+
+}
+
+.heading-header {
+
+    font-size: 2rem;
+    text-align: center;
+    direction: rtl;
+    padding-bottom: 20px;
+}
+
+.pragraf-header {
+    font-size: 1.1rem;
+    margin-left: 6rem;
+    padding-bottom: 15px;
+}
+
+.btn-header {
+
+     padding: 10px 20px 10px 20px;
+    font-size: 1.3rem;
+    font-weight: 700;
+    border: none;
+    border-radius: 30px;
+    margin-left: 10rem;
+    color: aliceblue;
+    background-color: #B88E61;
+    transition: 1s ease;
+text-decoration: none;
+
+}
+
+.bi-arrow-left-circle {
+    padding-right: 10px;
+}
+
+.btn-header .bi-book-half{
+    padding-left: 2rem;
+}
+
+.btn-header:hover {
+
+    background-color: #072A4E;
+    border: 1px solid #072A4E;
+}
+
+.header-right {
+    float: right;
+    border-top: 5px solid whitesmoke;
+    border-right: 5px solid whitesmoke;
+    padding-top: 1rem;
+    padding-right: 1rem;
+
+}
+
+.header-right img {
+    width: 100%;
+    max-width: 359px;
+    height: auto;
+    border-radius: 20px;
+}
+
+.header-center {
+    display: flex;
+    flex-direction: column;
+    margin-top: 25vh;
+    margin-left: 50%;
+    font-size: 30px;
+    color: aliceblue;
+}
+
+.bi-caret-down-fill {
+    animation: upDown 1s infinite;
+}
+
+@keyframes upDown {
+
+    0%,
+    100% {
+        transform: translateY(0);
+    }
+
+    50% {
+        transform: translateY(10px);
+    }
+}
+
+/* Responsive Design */
+@media screen and (max-width: 1024px) {
+    .header-top {
+        margin-left: 5rem;
+        margin-right: 5rem;
+        flex-direction: column;
+        align-items: center;
+    }
+    .header-left, .header-right {
+        width: 100%;
+        float: none;
+        text-align: center;
+        border: none;
+    }
+    .header-right img{
+        margin-left: 10rem;
+        margin-top: 5rem;
+    }
+    .pragraf-header {
+        margin-left: 0;
+        text-align: center;
+    }
+    .btn-header {
+        margin-left: 0;
+        display: inline-block;
+    }
+    .header-right img {
+        max-width: 80%;
+    }
+    .header-center {
+        margin-left: 0;
+        text-align: center;
+        font-size: 25px;
+    }
+}
+
+@media (max-width: 768px) {
+    .header-top {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        text-align: center;
+        margin: 2rem;
+    }
+
+    .header-left {
+        width: 100%;
+        order: 1;
+        text-align: center;
+        padding: 20px 30px;
+    }
+
+    .heading-header {
+        font-size: 1.5rem;
+        text-align: center;
+        margin: 0 auto 1rem;
+    }
+
+    .pragraf-header {
+        font-size: 1.2rem;
+        margin: 0 auto 1rem;
+    }
+
+    .btn-header {
+        width: 60%;
+        margin: 1rem auto 1.5rem;
+        order: 2;
+    }
+
+    .header-right {
+        position: relative;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        padding-right: 3rem;
+        border: none;
+    }
+
+    .header-right img {
+        width: 100%;
+        max-width: 280px;
+        height: auto;
+        border-radius: 20px;
+        margin-left: 15rem;
+    }
+
+    .header-center {
+        order: 4;
+        margin-top: 5rem;
+        margin-right: 2rem;
+    }
+}
+
+@media(max-width:1024px) {
+    .header-right {
+        padding-right: 15rem;
+    }
+}
+
+main {
+    height: 80vh;
+    background-image: url('../img/Doctor.6e97bf6b.png');
+    background-size: cover;
+    background-position: center;
+    background-attachment: fixed;
+}
+
+.main {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-end;
+    text-align: right;
+    padding-right: 10rem;
+    padding-top: 10rem;
+}
+
+.heading-main {
+    font-size: 2.9rem;
+    font-weight: 500;
+}
+
+.pragraf-main {
+    font-size: 2.1rem;
+}
+
+ .btn-main {
+    width: 70%;
+    padding: 10px 20px 10px 20px;
+    font-size: 1.3rem;
+    font-weight: 700;
+    border-radius: 30px;
+    margin-left: 10rem;
+    color: aliceblue;
+    background-color: #B88E61;
+    border: none;
+    cursor: pointer;
+    transition: 1s ease;
+    text-decoration: none;
+}
+
+.btn-main:hover {
+    background-color: #072A4E;
+    border: 1px solid #072A4E;
+}
+
+/* للشاشات الأصغر من 1024px (التابلت) */
+@media (max-width: 1024px) {
+    .main {
+        padding-right: 5rem;
+        padding-top: 15rem;
+
+    }
+
+    .heading-main {
+        font-size: 2.8rem;
+    }
+
+    .pragraf-main {
+        font-size: 2rem;
+    }
+
+   a .btn-main {
+        width: 80%;
+        font-size: 1.9rem;
+        margin-left: 5rem;
+        margin-top: 3rem;
+    }
+}
+
+/* للشاشات الأصغر من 768px (الموبايل) */
+@media (max-width: 768px) {
+    main {
+        height: 60vh;
+        background-attachment: scroll;
+        /* منع التثبيت في الخلفية */
+    }
+
+    .main {
+        align-items: center;
+        /* توسيط العناصر */
+        text-align: center;
+        padding-right: 0;
+        padding-top: 5rem;
+    }
+
+    .heading-main {
+        font-size: 2rem;
+    }
+
+    .pragraf-main {
+        font-size: 1.5rem;
+    }
+
+   a .btn-main {
+        width: 100%;
+        font-size: 1.3rem;
+        margin-left: 0;
+    }
+}
+
+/* end maim */
+
+
+section {
+    height: 200vh;
+}
+
+.text-section {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+    gap: 15px;
+    padding-top: 5rem;
+}
+
+.text-section .heading-text {
+    font-size: 2.5rem;
+    font-weight: bold;
+}
+
+.text-section .pragraf-text {
+    font-size: 1.7rem;
+    margin-bottom: 15px;
+    width: 60%;
+
+}
+
+.btn-section {
+    width: 100%;
+    padding: 10px 20px;
+    font-size: 1.3rem;
+    font-weight: 700;
+    border-radius: 30px;
+    color: aliceblue;
+    background-color: #B88E61;
+    border: none;
+    cursor: pointer;
+    transition: 0.3s ease-in-out;
+}
+
+.btn-section:hover {
+    background-color: #072A4E;
+    border: 1px solid #072A4E;
+}
+
+.scroll-container {
+    display: flex;
+    overflow-x: auto;
+    /* تفعيل السكرول الأفقي */
+    gap: 15px;
+    /* مسافة بين الكروت */
+    padding: 10px;
+    white-space: nowrap;
+    /* يمنع الكروت من النزول لسطر جديد */
+    scrollbar-width: thin;
+    /* تقليل حجم الاسكرول في فايرفوكس */
+    scrollbar-color: #888 #f1f1f1;
+    /* لون الاسكرول */
+}
+
+.scroll-container::-webkit-scrollbar {
+    height: 8px;
+    /* ارتفاع شريط التمرير */
+}
+
+.scroll-container::-webkit-scrollbar-thumb {
+    background: #888;
+    /* لون المقبض */
+    border-radius: 5px;
+}
+
+.scroll-container::-webkit-scrollbar-thumb:hover {
+    background: #555;
+    /* لون المقبض عند التمرير */
+}
+
+.card {
+    flex: 0 0 auto;
+    height: 28rem;
+    /* يمنع تمدد الكروت */
+    width: 20rem;
+    /* نفس عرض الكروت */
+    border-radius: 30px;
+    margin-top: 10rem;
+    margin-bottom: 3rem;
+}
+
+.card .card-img-top {
+    width: 100%;
+    height: 40%;
+
+}
+
+.card .card-title {
+    width: 100%;
+direction: rtl;
+    height: 50%;
+    overflow: hidden;
+    display: -webkit-box;
+    -webkit-line-clamp: 3;
+    /* عدد الأسطر المسموح بها */
+    -webkit-box-orient: vertical;
+    white-space: normal;
+    /* يسمح بلف النص داخل العنصر */
+    margin-bottom: -3rem;
+}
+
+.card .card-text {
+    direction: rtl;
+    width: 100%;
+    overflow: hidden;
+    display: -webkit-box;
+    -webkit-line-clamp: 3;
+    /* عدد الأسطر المسموح بها */
+    -webkit-box-orient: vertical;
+    white-space: normal;
+    /* يسمح بلف النص داخل العنصر */
+}
+
+.card .btn-primary {
+    width: 90%;
+    font-size: 1.1rem;
+    display: inline-block;
+    margin-left: 1rem;
+    border-radius: 30px;
+    color: aliceblue;
+    background-color: #B88E61;
+    border: none;
+    cursor: pointer;
+    transition: 1s ease;
+
+}
+
+.card .btn-primary:hover {
+    background-color: #072A4E;
+    border: 1px solid #072A4E;
+}
+
+/* تنسيق شريط التمرير */
+.scroll-container {
+    display: flex;
+    overflow-x: auto;
+    gap: 15px;
+    padding: 10px;
+    white-space: nowrap;
+    scrollbar-width: thin;
+    /* للفايرفوكس */
+    scrollbar-color: #888 #f1f1f1;
+    /* لون الاسكرول */
+}
+
+/* تخصيص الاسكرول للكروم و سفاري */
+.scroll-container::-webkit-scrollbar {
+    height: 8px;
+    /* ارتفاع الاسكرول */
+}
+
+/* جعل المقبض (thumb) متقطع */
+.scroll-container::-webkit-scrollbar-thumb {
+    background: repeating-linear-gradient(90deg,
+            #888,
+            #888 10px,
+            transparent 10px,
+            transparent 20px);
+    border-radius: 5px;
+}
+
+/* عند تمرير الماوس فوق الاسكرول */
+.scroll-container::-webkit-scrollbar-thumb:hover {
+    background: repeating-linear-gradient(90deg,
+            #555,
+            #555 10px,
+            transparent 10px,
+            transparent 20px);
+}
+
+/* تأثير الظلال الجانبية */
+.scroll-wrapper {
+    position: relative;
+}
+
+.scroll-wrapper::before,
+.scroll-wrapper::after {
+    content: "";
+    position: absolute;
+    top: 0;
+    width: 50px;
+    height: 100%;
+    z-index: 2;
+    pointer-events: none;
+    background: linear-gradient(to right, rgba(255, 255, 255, 0.9), rgba(255, 255, 255, 0));
+}
+
+.scroll-wrapper::before {
+    left: 0;
+}
+
+.scroll-wrapper::after {
+    right: 0;
+    background: linear-gradient(to left, rgba(255, 255, 255, 0.9), rgba(255, 255, 255, 0));
+}
+
+
+@media (max-width: 1024px) {
+    section{
+        height: 120vh;
+    }
+    .text-section {
+        padding-top: 5rem;
+    }
+
+    .text-section .heading-text {
+        font-size: 2.6rem;
+    }
+
+    .text-section .pragraf-text {
+        font-size:2rem;
+        width: 80%;
+    }
+
+     a .btn-section {
+        width: 100%;
+        font-size: 1.9rem;
+    }
+
+    .card {
+        width: 18rem;
+        height: 28rem;
+    }
+
+    .card .btn-primary {
+        width: 60%;
+        font-size: 1rem;
+    }
+}
+
+@media (max-width: 768px) {
+    section {
+        height: auto;
+        padding-bottom: 3rem;
+    }
+
+    .text-section {
+        padding-top: 2rem;
+        gap: 10px;
+    }
+
+    .text-section .heading-text {
+        font-size: 1.8rem;
+    }
+
+    .text-section .pragraf-text {
+        font-size: 1.3rem;
+        width: 90%;
+    }
+
+   a .btn-section {
+        width: 100%;
+        font-size: 1.2rem;
+    }
+
+  
+   
+
+    .card {
+        flex: 0 0 auto;
+        /* يضمن بقاء كل كارت بنفس الحجم */
+        width: 16rem;
+        /* تصغير العرض قليلاً للموبايل */
+        height: 26rem;
+        /* تصغير الارتفاع قليلاً */
+        border-radius: 15px;
+        height:30rem;
+    }
+
+    .card .card-title,
+    .card .card-text {
+        -webkit-line-clamp: 4;
+        padding-bottom: 50px;
+    }
+
+    .card .btn-primary {
+        width: 60%;
+        /* تصغير الزر */
+        font-size: 0.8rem;
+        /* تصغير الخط */
+        padding: 5px 10px;
+    }
+}
+
+
+/* end section */
+
+footer {
+    height: 40vh;
+
+    background-image: url("../img/Background.9b7deee0.svg");
+
+    background-attachment: fixed;
+    background-size: cover;
+    background-repeat: no-repeat;
+
+}
+
+.right-footer {
+    float: right;
+    margin-right: 10rem;
+    margin-top: 2rem;
+
+}
+
+.img-footer {
+    float: right;
+    margin-top: 25px;
+}
+
+.left-footer {
+    float: left;
+    margin-left: 10rem;
+    margin-top: 2rem;
+    margin-bottom: 2rem;
+}
+
+.left-footer .bi {
+    font-size: 2.8rem;
+    color: #f1f1f1;
+    padding-right: 10px;
+    cursor: pointer;
+    transition: 1s ease;
+}
+
+.left-footer .bi:hover {
+    color: #B88E61;
+}
+
+.phon-footer {
+    margin-top: 2rem;
+}
+
+.phon-footer span {
+    color: #f1f1f1;
+    font-size: 1.1rem;
+}
+
+.phon-footer .bi-telephone-fill {
+    font-size: 1.3rem;
+    color: #B88E61;
+}
+
+.email-footer a {
+    font-size: 1.1rem;
+    padding-left: 6px;
+    color: #f1f1f1;
+    text-decoration: none;
+}
+
+.email-footer .bi {
+    font-size: 1.3rem;
+    color: #B88E61;
+}
+
+.pragraf-footer-left {
+    float: left;
+    margin-left: 10rem;
+    color: #f1f1f1;
+    margin-top: 1rem;
+    
+}
+
+.pragraf-footer-right {
+    float: right;
+    margin-right: 10rem;
+    color: #f1f1f1;
+    margin-top: 1rem;
+}
+
+/* Responsive Design */
+@media screen and (max-width: 1024px) {
+    footer {
+        height: auto;
+        padding: 2rem 0;
+    }
+    .right-footer, .left-footer, .pragraf-footer-left, .pragraf-footer-right {
+        float: none;
+        margin: 1rem auto;
+        text-align: center;
+    }
+    .right-footer a{
+  margin-right: 8rem;
+  margin-bottom: 1rem;
+    }
+    .right-footer {
+        margin-right: 0;
+    }
+    .left-footer {
+        margin-left: 0;
+    }
+    .pragraf-footer-left, .pragraf-footer-right {
+        margin-left: 0;
+        margin-right: 0;
+    }
+    .img-footer {
+        float: none;
+        display: block;
+        margin: 1rem auto;
+    }
+}
+
+@media (max-width: 768px) {
+    footer {
+        height: auto; /* السماح بتمدد الفوتر حسب المحتوى */
+        text-align: center;
+        padding: 2rem 1rem;
+    }
+
+    .right-footer, .left-footer {
+        float: none; /* إلغاء الـ float لضمان ترتيب المحتوى بشكل عمودي */
+        margin: 0 auto;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+    }
+
+    .img-footer {
+        float: none;
+        margin: 15px auto;
+    }
+
+    .left-footer .bi {
+        font-size: 2.5rem; /* تكبير الأيقونات */
+        margin-bottom: 10px;
+    }
+
+    /* إخفاء اللينكات */
+    .pragraf-footer-left,
+    .pragraf-footer-right {
+        display: none;
+    }
+
+    /* تنسيق الهاتف والإيميل */
+    .phon-footer, .email-footer {
+        display: flex;
+        align-items: center;
+        gap: 10px;
+        margin-top: 10px;
+    }
+
+    .phon-footer span,
+    .email-footer a {
+        font-size: 1rem;
+    }
+}
+
+
+/* end footer */
